@@ -35,24 +35,10 @@ the [Configuration](cfg.md) page.
 
 !!! example ""
 
-    === "CLI"
-    
-        ```bash
-        yolo detect train data=coco128.yaml model=yolov8n.pt epochs=100 imgsz=640
-        ```
-
-    === "Python"
-    
-        ```python
-        from ultralytics import YOLO
-        
-        # Load a model
-        model = YOLO("yolov8n.yaml")  # build a new model from scratch
-        model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
-        
-        # Train the model
-        results = model.train(data="coco128.yaml", epochs=100, imgsz=640)
-        ```
+      ```bash
+      yolo detect train data=coco128.yaml model=yolov8n.pt epochs=100 imgsz=640
+      yolo detect train resume model=last.pt  # resume training
+      ```
 
 ## Val
 
@@ -61,25 +47,10 @@ training `data` and arguments as model attributes.
 
 !!! example ""
 
-    === "CLI"
-    
-        ```bash
-        yolo detect val model=yolov8n.pt  # val official model
-        yolo detect val model=path/to/best.pt  # val custom model
-        ```
-
-    === "Python"
-    
-        ```python
-        from ultralytics import YOLO
-        
-        # Load a model
-        model = YOLO("yolov8n.pt")  # load an official model
-        model = YOLO("path/to/best.pt")  # load a custom model
-        
-        # Validate the model
-        results = model.val()  # no arguments needed, dataset and settings remembered
-        ```
+      ```bash
+      yolo detect val model=yolov8n.pt  # val official model
+      yolo detect val model=path/to/best.pt  # val custom model
+      ```
 
 ## Predict
 
@@ -87,25 +58,10 @@ Use a trained YOLOv8n model to run predictions on images.
 
 !!! example ""
 
-    === "CLI"
-    
-        ```bash
-        yolo detect predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"  # predict with official model
-        yolo detect predict model=path/to/best.pt source="https://ultralytics.com/images/bus.jpg"  # predict with custom model
-        ```
-
-    === "Python"
-    
-        ```python
-        from ultralytics import YOLO
-        
-        # Load a model
-        model = YOLO("yolov8n.pt")  # load an official model
-        model = YOLO("path/to/best.pt")  # load a custom model
-        
-        # Predict with the model
-        results = model("https://ultralytics.com/images/bus.jpg")  # predict on an image
-        ```
+      ```bash
+      yolo detect predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"  # predict with official model
+      yolo detect predict model=path/to/best.pt source="https://ultralytics.com/images/bus.jpg"  # predict with custom model
+      ```
 
 ## Export
 
@@ -113,25 +69,10 @@ Export a YOLOv8n model to a different format like ONNX, CoreML, etc.
 
 !!! example ""
 
-    === "CLI"
-    
-        ```bash
-        yolo export model=yolov8n.pt format=onnx  # export official model
-        yolo export model=path/to/best.pt format=onnx  # export custom trained model
-        ```
-
-    === "Python"
-    
-        ```python
-        from ultralytics import YOLO
-        
-        # Load a model
-        model = YOLO("yolov8n.pt")  # load an official model
-        model = YOLO("path/to/best.pt")  # load a custom trained
-        
-        # Export the model
-        model.export(format="onnx")
-        ```
+      ```bash
+      yolo export model=yolov8n.pt format=onnx  # export official model
+      yolo export model=path/to/best.pt format=onnx  # export custom trained model
+      ```
 
     Available YOLOv8 export formats include:
     
@@ -154,7 +95,7 @@ Export a YOLOv8n model to a different format like ONNX, CoreML, etc.
 
 ## Overriding default arguments
 
-Default arguments can be overriden by simply passing them as arguments in the CLI in `arg=value` pairs.
+Default arguments can be overridden by simply passing them as arguments in the CLI in `arg=value` pairs.
 
 !!! tip ""
 
